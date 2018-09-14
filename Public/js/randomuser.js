@@ -72,6 +72,9 @@ thumbnail: ""
         console.log('TASK FETCH ERROR:');
         console.log(err);
       })
+    },
+    refreshButton: function(event){
+    this.fetchData();
     }
   },
   created () {

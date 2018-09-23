@@ -1,7 +1,6 @@
 var randomuser = new Vue({
   el: '#randuser',
   data: {
-
 userdata: [
 {
 gender: "",
@@ -42,17 +41,18 @@ thumbnail: ""
     pretty_date: function (d) {
       return moment(d).format('l')
     },
-    pretty_currency: function (val) {
-      if (val < 1e3) {
-        return '$ ' + val
-      }
+      pretty_currency: function (val) {
+        if (val < 1e3) {
+          return '$ ' + val
+        }
 
-      if (val < 1e6) {
-        return '$ ' + (val/1e3).toFixed(1) + ' k'
-      }
+        if (val < 1e6) {
+          return '$ ' + (val/1e3).toFixed(1) + ' k'
+        }
 
-      return '$ ' + (val/1e6).toFixed(1) + ' M'
-    },
+        return '$ ' + (val/1e6).toFixed(1) + ' M'
+
+      },
     completeClass: function(task) {
       if (task.perc_complete == 100 ) {
         return 'alert-success'

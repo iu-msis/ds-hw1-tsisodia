@@ -1,116 +1,103 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <title>Home Page</title>
-  </head>
-  <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="#">Home</a>
-          <a class="nav-item nav-link" href="Description.html">Description</a>
-          <a class="nav-item nav-link" href="UsefulLinks.html">Useful Links</a>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <title>Home Page</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Home</a>
+                    <a class="nav-item nav-link" href="Description.html">Description</a>
+                    <a class="nav-item nav-link" href="UsefulLinks.html">Useful Links</a>
+                </div>
+            </div>
+        </nav>
+        <div class="user" id="randuser">
+            <h1>
+                <center>
+                    <div v-for="userdata in results">
+                        {{userdata.name.first}} {{userdata.name.last}}
+                    </div>
+                </center>
+            </h1>
+            <div class="headintro">
+                <!--source: https://static.timesofisrael.com/www/uploads/2012/06/lisa-kudrow-e1400148882425.jpg-->
+                <p>Learning about different types of crystals is fascinating!. </p>
+            </div>
+            <div v-for="userdata in results">
+                <center><a v-bind:href="userdata.picture.large"><img v-bind:src="userdata.picture.large" width="200px"/></a></center>
+                <br />
+            </div>
+            <h2>
+                <center>Contact Info</center>
+            </h2>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr v-for="userdata in results">
+                        <td><b>Name</b></td>
+                        <td>
+                            {{userdata.name.first}} {{userdata.name.last}}
+                        </td>
+                        </td></td>
+                    </tr>
+                    <tr v-for="userdata in results">
+                        <td><b>City</b></td>
+                        <td>{{userdata.location.city}}</td>
+                    </tr>
+                    <tr v-for="userdata in results">
+                        <td><b>Date of Birth</b></td>
+                        <td>{{pretty_date(userdata.dob.date)}}</td>
+                    </tr>
+                    <tr v-for="userdata in results">
+                        <td><b>Age</b></td>
+                        <td>{{age(userdata.dob.date)}}</td>
+                    </tr>
+                    <tr v-for="userdata in results">
+                        <td><b>Email</b></td>
+                        <td><a :href="'mailto:'+userdata.email">{{userdata.email}}</a></td>
+                    </tr>
+                    <tr v-for="userdata in results">
+                        <td><b>Phone</b></td>
+                        <td>{{userdata.phone}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <center>
+                <button class="btn" @click="refreshButton();">Refresh Button</button>
+            </center>
         </div>
-      </div>
-    </nav>
-
-
-<div class="user" id="randuser">
-  <h1><center>{{userdata.name.first}} {{userdata.name.last}}</center></h1>
-  <div class="headintro">
-
-         <!--source: https://static.timesofisrael.com/www/uploads/2012/06/lisa-kudrow-e1400148882425.jpg-->
-
-
-      <p>Learning about different types of crystals is fascinating!. </p>
-  </div>
-
-   <center><a :href="userdata.picture.large"><img :src="userdata.picture.large" width="200px"/></a></center><br />
-
-    <h2><center>Contact Info</center></h2>
-
-        <table class="table table-bordered">
-
-         <tbody>
-
-           <tr>
-             <td><b>Name</b></td>
-             <td>
-               {{userdata.name.first}} {{userdata.name.last}}
-             </td>
-             </td></td>
-           </tr>
-           <tr>
-             <td><b>City</b></td>
-
-             <td>{{userdata.location.city}}</td>
-           </tr>
-           <tr>
-             <td><b>Date of Birth</b></td>
-             <td>{{pretty_date(userdata.dob.date)}}</td>
-           </tr>
-           <tr>
-             <td><b>Age</b></td>
-             <td>{{age}}</td>
-           </tr>
-           <tr>
-             <td><b>Email</b></td>
-             <td><a :href="'mailto:'+userdata.email">{{userdata.email}}</a></td>
-           </tr>
-           <tr>
-             <td><b>Phone</b></td>
-             <td>{{userdata.phone}}</td>
-           </tr>
-
-         </tbody>
-
-       </table>
-       <center>
-         <button class="btn" @click="refreshButton">Refresh Button</button>
-       </center>
-     </div>
-
-
-     <br>
-           <h2>Types of Crystals</h2>
-           <br>
-     <div class= "container">
-       <div class= "row">
-         <div class="col-lg-4">
-           <h3>Rose Quartz</h3>
-           <!--source: https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjk14jNk5HdAhXH7YMKHc0UD-UQjRx6BAgBEAU&url=https%3A%2F%2Fwww.amazon.com%2FRose-Quartz-Heart-1-1pc%2Fdp%2FB004BD0ISQ&psig=AOvVaw3B7Nt8Nq0bc27uhY6vOwaY&ust=1535594001077272-->
-           <center><a href="img/Rose_Quartz.jpg"><img src="img/Rose_Quartz.jpg" width="150px"></a></center>
-         </div>
-
-         <div class="col-lg-4 img-center">
-         <h3>Green Aventurine</h3>
-         <!-- https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwirtaDXnpHdAhWK94MKHWMlCBUQjRx6BAgBEAU&url=https%3A%2F%2Fwww.crystalvaults.com%2Fcrystal-encyclopedia%2Fgreen-aventurine&psig=AOvVaw3Hb3XzTHKOBioqwEQ0UC1f&ust=1535596982308499-->
-         <center><a href="img/Green_Aventurine.jpg"><img src="img/Green_Aventurine.jpg" width="150px"></a></center>
-         </div>
-
-         <div class="col-lg-4">
-         <h3>Lapiz Lazuli</h3>
-         <!-- https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiGz_6wn5HdAhUK24MKHaaRBlUQjRx6BAgBEAU&url=https%3A%2F%2Fwww.snapdeal.com%2Fproduct%2Fkohinor-gems-blue-lapis-lazuli%2F647092968330&psig=AOvVaw0zBuvzB36qW7s8DOJM772-&ust=1535597169484203-->
-         <center><a href="img/Lapis_Lazuli.jpg"><img src="img/Lapis_Lazuli.jpg" width="150px" ></a></center>
-         </div>
-       </div>
-     </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-
-<!-- development version, includes helpful console warnings -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="js/randomuser.js"></script>
-
-  </body>
-  </html>
+        <br>
+        <h2>Types of Crystals</h2>
+        <br>
+        <div class= "container">
+            <div class= "row">
+                <div class="col-lg-4">
+                    <h3>Rose Quartz</h3>
+                    <!--source: https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjk14jNk5HdAhXH7YMKHc0UD-UQjRx6BAgBEAU&url=https%3A%2F%2Fwww.amazon.com%2FRose-Quartz-Heart-1-1pc%2Fdp%2FB004BD0ISQ&psig=AOvVaw3B7Nt8Nq0bc27uhY6vOwaY&ust=1535594001077272-->
+                    <center><a href="img/Rose_Quartz.jpg"><img src="img/Rose_Quartz.jpg" width="150px"></a></center>
+                </div>
+                <div class="col-lg-4 img-center">
+                    <h3>Green Aventurine</h3>
+                    <!-- https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwirtaDXnpHdAhWK94MKHWMlCBUQjRx6BAgBEAU&url=https%3A%2F%2Fwww.crystalvaults.com%2Fcrystal-encyclopedia%2Fgreen-aventurine&psig=AOvVaw3Hb3XzTHKOBioqwEQ0UC1f&ust=1535596982308499-->
+                    <center><a href="img/Green_Aventurine.jpg"><img src="img/Green_Aventurine.jpg" width="150px"></a></center>
+                </div>
+                <div class="col-lg-4">
+                    <h3>Lapiz Lazuli</h3>
+                    <!-- https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiGz_6wn5HdAhUK24MKHaaRBlUQjRx6BAgBEAU&url=https%3A%2F%2Fwww.snapdeal.com%2Fproduct%2Fkohinor-gems-blue-lapis-lazuli%2F647092968330&psig=AOvVaw0zBuvzB36qW7s8DOJM772-&ust=1535597169484203-->
+                    <center><a href="img/Lapis_Lazuli.jpg"><img src="img/Lapis_Lazuli.jpg" width="150px" ></a></center>
+                </div>
+            </div>
+        </div>
+        <!-- development version, includes helpful console warnings -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        <script src="js/randomuser.js"></script>
+    </body>
+</html>

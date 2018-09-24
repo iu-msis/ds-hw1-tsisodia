@@ -1,43 +1,15 @@
 var randomuser = new Vue({
   el: '#randuser',
   data: {
-userdata: [
-{
-gender: "",
-name: {
-title: "",
-first: "",
-last: ""
-},
-location: {
-street: "",
-city: "",
-state: "",
-postcode: "",
-},
-email: "",
-dob: {
-date: ""
-},
-
-phone: "",
-
-picture: {
-large: "",
-medium: "",
-thumbnail: ""
-},
-
-}
-]
-},
+    results: []
+  },
   computed: {
-    age: function () {
-      const age=moment(this.userdata.dob.date).diff(moment(), 'years');
-      return Math.abs(age);
-    }
+
   },
   methods: {
+    age: function (d) {
+      return moment().diff(moment(d), 'years');
+    },
     pretty_date: function (d) {
       return moment(d).format('l')
     },
@@ -62,19 +34,18 @@ thumbnail: ""
       }
     },
     fetchData () {
-      fetch('https://randomuser.me/api/')
-      .then( response => response.json() )
-      // ^ This is the same as .then( function(response) {return response.json()} )
-      .then( json => {randomuser.userdata = json.results[0];
-        console.log(json.results);
-      } )
-      .catch( err => {
-        console.log('TASK FETCH ERROR:');
-        console.log(err);
-      })
+      fetch('https://randomuser.me/api')
+        .then(response => response.json())
+        .then(json => {
+            this.results = json.results;
+        })
+        .catch((err) => {
+            console.log("fetch error");
+            console.log('*** ', err);
+        });
     },
-    refreshButton: function(event){
-    this.fetchData();
+    refreshButton: function(){
+      this.fetchData();
     }
   },
   created () {

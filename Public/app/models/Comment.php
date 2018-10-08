@@ -16,9 +16,7 @@ class Comment
       $db = new PDO(DB_SERVER, DB_USER, DB_PW);
 
 //TODO edit insert query to reflect comment api
-      $sql = 'INSERT Comment(comment) VALUES (?)';
-
-
+      $sql = 'INSERT INTO comment(comment) VALUES (?)';
       $statement = $db->prepare($sql);
 
       $success = $statement->execute([

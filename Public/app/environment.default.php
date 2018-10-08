@@ -2,4 +2,4 @@
 
 const DB_USER = 'root';
 const DB_PW = 'hello';
-const DB_SERVER = 'mysql:host=localhost;dbname=HW6';
+const DB_SERVER = 'mysql:host=localhost;dbname=dashboard';

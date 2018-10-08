@@ -39,19 +39,19 @@ class Comment
 
       // 3. Run the query
       $success = $statement->execute(
-          
+
       );
 
       // 4. Handle the results
       $arr = [];
       while ($comment_row = $statement->fetch(PDO::FETCH_ASSOC)) {
-        // 4.a. For each row, make a new work object
+        // 4.a. For each row, make a new comment object
         $commentItem =  new Comment($comment_row);
 
         array_push($arr, $commentItem);
       }
 
-      // 4.b. return the array of work objects
+      // 4.b. return the array of comment objects
 
       return $arr;
     }

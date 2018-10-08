@@ -1,6 +1,6 @@
 <?php
 
-require '../app/common.php';
+require '../../app/common.php';
 header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   require 'commentPost.php';

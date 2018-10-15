@@ -26,7 +26,7 @@
     </nav>
 
     <main id="commentMainVue">
-      <div class="div">
+      <div>
         <form id="newCommentForm" @submit.prevent="handleCommentForm">
           <div class="form-group row">
             <input id="comment" type="text" v-model="commentForm.comment" class="form-control" required>
@@ -35,7 +35,7 @@
         </form>
       </div>
 
-      <div class="div">
+      <div>
         <table id="commentTable">
           <thead>
             <tr>

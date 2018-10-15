@@ -39,15 +39,14 @@
       </div>
 
       <div>
-
-        <table id="commentTable">
+        <table id="commentTable"class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Comment</th>
             </tr>
-
           </thead>
+
           <tbody id="commentTableBody">
             <tr v-for="c in comment" :key="c.id" :id="'comment- ' + c.id">
               <td>

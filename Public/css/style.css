@@ -68,9 +68,6 @@ th[aria-sort]:not(.no-sort):after {
 	visibility: visible;
 	opacity: 0.4;
 }
- navbar.active-link a  { font-weight: bold !important;
-
-  }
 
 th[role=columnheader]:not(.no-sort):hover:after {
 	visibility: visible;
